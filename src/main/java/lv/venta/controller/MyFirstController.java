@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MyFirstController {
 	
 	private Random rand = new Random();
-	@GetMapping("/simple") //localhost8080/simple
+	
+	
+	@GetMapping("/simple") //localhost:8080/simple
 	public String myFirstGetController() {
 		System.out.println("Pirmais kotrolieris nostradaja!");
 		return "simple-page"; //paradit simple-page.htm
@@ -18,7 +20,7 @@ public class MyFirstController {
 	
 	
 	
-	@GetMapping("/getdata")//localhost8080/getdata
+	@GetMapping("/getdata")//localhost:8080/getdata
 	public String getControllerSendData(Model model) {
 		System.out.println("Send data kotrolieris nostradaja!");
 		String data =  "Baiba -> " + rand.nextInt(0, 101);
