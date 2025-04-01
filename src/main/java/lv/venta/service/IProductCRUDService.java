@@ -15,15 +15,15 @@ public interface IProductCRUDService {
 	
 	
 	//retrieve by Id
-	public abstract Product retrieveById(int id) throws Exception;
+	public abstract Product retrieveById(long id) throws Exception;
 	
 	
 	//update
-	public abstract void updateProductById(int id, String description, float price, int quantity) throws Exception;
+	public abstract void updateProductById(long id, String description, float price, int quantity) throws Exception;
 	
 	
 	//delete
-	public abstract void deleteById(int id) throws Exception;
+	public abstract void deleteById(long id) throws Exception;
 	
 	
 }
