@@ -20,7 +20,11 @@ public class productCRUDServiceImpl implements IProductCRUDService{
 
 	@Override
 	public void createProduct(String title, String description, float price, int quantity) throws Exception {
-		// TODO Auto-generated method stub
+		if(description == null || !title.matches("[A-Z]{1}[a-z]{2,15}") ||
+				description.matches("[A-Za-z ;:]{3,30}") || price < 0 || price > 1000 || quantity < 0 || quantity > 100) {
+			throw new Exception ("Incorrect imput params");
+		}
+		
 		
 	}
 	
@@ -59,15 +63,13 @@ public class productCRUDServiceImpl implements IProductCRUDService{
 		if(productForUpdating.getDescription().equals(description)){
 			productForUpdating.setDescription(description);
 		}
-		
 		if(productForUpdating.getPrice() != price){
 			productForUpdating.setPrice(price);
 		}
-		
 		if(productForUpdating.getQuantity() != quantity){
 			productForUpdating.setQuantity(quantity);
 		}
-		
+		prodRepo.save(productForUpdating);
 	}
 	
 
