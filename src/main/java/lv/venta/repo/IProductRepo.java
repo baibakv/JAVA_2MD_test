@@ -8,5 +8,9 @@ import lv.venta.model.Product;
 //long - tabulas primary key tips(ar lielo burtu)
 
 public interface IProductRepo extends CrudRepository<Product, Long>{
+
+	public abstract Product findByTitleAndDescriptionAndPrice(String title, String description, float price);
+
+	public abstract boolean existsByTitleAndDescriptionAndPrice(String title, String description, float price);
 	
 }

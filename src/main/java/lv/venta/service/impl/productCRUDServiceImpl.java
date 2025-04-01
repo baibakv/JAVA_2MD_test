@@ -24,8 +24,18 @@ public class productCRUDServiceImpl implements IProductCRUDService{
 				description.matches("[A-Za-z ;:]{3,30}") || price < 0 || price > 1000 || quantity < 0 || quantity > 100) {
 			throw new Exception ("Incorrect imput params");
 		}
+		if(prodRepo.existsByTitleAndDescriptionAndPrice(title, description, price)) {
+			Product productExists = prodRepo.findByTitleAndDescriptionAndPrice(title, description, price);
+			
+			int newQuantity = productExists.getQuantity() + quantity;
+			productExists.setQuantity(newQuantity);
+			prodRepo.save(productExists);
+ 		}
 		
-		
+		else {
+			Product newProduct = new Product(title, description, price, quantity);
+			prodRepo.save(newProduct);
+		}
 	}
 	
 
