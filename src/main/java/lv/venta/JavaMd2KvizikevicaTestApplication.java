@@ -33,6 +33,16 @@ public class JavaMd2KvizikevicaTestApplication {
 			
 			System.out.println("cik produkti eksiste?--> " + prodRepo.count());
 			
+				System.out.println("visi produkti---> " + prodRepo.findAll());
+				System.out.println("atrst otro ---> " + prodRepo.findById(2l));
+				
+				Product productFromDB = prodRepo.findById(2l).get();
+				productFromDB.setPrice(8.55f);
+				prodRepo.save(productFromDB);
+				
+				prodRepo.deleteById(2l);
+				System.out.println(prodRepo.findAll());
+			
 			}
 		};
 	}
